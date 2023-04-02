@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\CampReservationSystem\CampId;
 use App\CampReservationSystem\CampReservationSystemModule;
 use App\Utility\UidHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,10 +22,10 @@ class ReservationController extends AbstractController
         ]);
     }
 
-    #[Route('{uid}', name: '__form', requirements: ['uid'=>UidHelper::UID_VALIDATION_REGEX])]
-    public function form(Uuid $uid, CampReservationSystemModule $system, TranslatorInterface $translator)
+    #[Route('{campId}', name: '__form', requirements: ['campId'=>CampId::VALIDATION_REGEX])]
+    public function form(string $campId, CampReservationSystemModule $system, TranslatorInterface $translator)
     {
-        $camp = $system->findCamp($uid);
+        $camp = $system->findCamp(new CampId($campId));
         if (!$camp){
             $this->addFlash(
                 'error',

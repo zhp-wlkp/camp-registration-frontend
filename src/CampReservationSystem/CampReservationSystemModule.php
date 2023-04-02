@@ -2,8 +2,6 @@
 
 namespace App\CampReservationSystem;
 
-use Symfony\Component\Uid\Uuid;
-
 /**
  * Facade for the module.
  */
@@ -13,8 +11,8 @@ class CampReservationSystemModule
         private CampFinderInterface $campFinder
     ) {
     }
-    public function findCamp(Uuid $uid): ?Camp
+    public function findCamp(CampId $id): ?Camp
     {
-        return $this->campFinder->findCamp($uid);
+        return $this->campFinder->findCamp($id);
     }
 }

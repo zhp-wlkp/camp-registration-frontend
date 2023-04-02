@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1aa5efc09e330a7f5c58d3e5973ec99c",
+    "content-hash": "558efeaa971ef9d5a701af67091ba0f6",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1558,6 +1558,53 @@
                 }
             ],
             "time": "2023-02-06T13:46:10+00:00"
+        },
+        {
+            "name": "munusphp/munus",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/munusphp/munus.git",
+                "reference": "486f85ca7a8dbdcaac6b9ce4229c2f522b748169"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/munusphp/munus/zipball/486f85ca7a8dbdcaac6b9ce4229c2f522b748169",
+                "reference": "486f85ca7a8dbdcaac6b9ce4229c2f522b748169",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.15",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.4",
+                "psalm/plugin-phpunit": "^0.15",
+                "vimeo/psalm": "4.4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Munus\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arkadiusz Kondas",
+                    "email": "arkadiusz.kondas@gmail.com"
+                }
+            ],
+            "description": "Power of object-oriented programming with the elegance of functional programming.",
+            "support": {
+                "issues": "https://github.com/munusphp/munus/issues",
+                "source": "https://github.com/munusphp/munus/tree/0.4.0"
+            },
+            "time": "2021-02-10T23:52:39+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
