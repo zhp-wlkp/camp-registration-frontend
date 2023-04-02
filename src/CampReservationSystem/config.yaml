@@ -1,0 +1,16 @@
+services:
+  _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  camp_reservation_system.camp_finder.sharepoint:
+    class: App\CampReservationSystem\Impl\SharepointCampFinder
+    lazy: true
+    shared: true
+
+  App\CampReservationSystem\CampFinderInterface: '@camp_reservation_system.camp_finder.sharepoint'
+
+  # Facade
+  App\CampReservationSystem\CampReservationSystemModule:
+    class: App\CampReservationSystem\CampReservationSystemModule
+    shared: true
