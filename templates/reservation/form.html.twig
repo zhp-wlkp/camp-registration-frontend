@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% trans %}Nie znaleziono obozu{% endtrans %}{% endblock %}
+{% block title %}{% trans %}Zgłoszenie {% endtrans %}{{camp.name}}{% endblock %}
 
 {% block body %}
-<h1>{{ camp.name}}</h1>
+<div class="py-5 text-center">
+    <p class="lead">Elektroniczny system rejestracji uczestników HAL, pozwoli Ci zapisać Twoje dziecki na obóz harcerski organizowany w Chorągwi Wielkopolskiej. Wypełnij poniższy formularz aby uzyskać kartę obozową.</p>
+</div>
+
+<h1>{{camp.name}}</h1>
 {% endblock %}
