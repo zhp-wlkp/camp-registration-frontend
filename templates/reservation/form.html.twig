@@ -4,18 +4,24 @@
 
 {% block body %}
 <h1 class="text-center">{% trans %}Zgłoszenie na {% endtrans %} {{camp.name}}</h1>
-<div>
-<p>Drodzy Rodzice,<br/>
-wypełnienie tego formularza spowoduje wypełnienie karty kwalifikacyjnej niezbędnej do wypoczynku, a kadrze obozu pozwoli zaoszczędzić długie godziny pracy przy przepisywaniu danych z kart kwalifikacyjnych do wymaganych dokumentów.</p>
+<div class="row">
+    <div class="col">
+    <p>Drodzy Rodzice,<br/>
+    wypełnienie tego formularza spowoduje wypełnienie karty kwalifikacyjnej niezbędnej do wypoczynku, a kadrze obozu pozwoli zaoszczędzić długie godziny pracy przy przepisywaniu danych z kart kwalifikacyjnych do wymaganych dokumentów.</p>
 
-<p>Czuwaj!</br>
-<i>Zespół IT Chorągwi Wielkopolskiej ZHP</i></p>
+    <p>Czuwaj!</br>
+    <i>Zespół IT Chorągwi Wielkopolskiej ZHP</i></p>
 
 
-<small>Administratorem Pani/Pana danych osobowych jest Związek Harcerstwa Polskiego z siedzibą w Warszawie przy ul. Marii Konopnickiej 6, 00-491 Warszawa ("ZHP"). Pani/Pana dane osobowe będą przetwarzane w celu nawiązania i utrzymywania kontaktu, w tym kontaktu w związku z podjętą z ZHP współpracą, a w szczególności organizacją Harcerskiej Akcji Letniej. Szczegółowe informacje dotyczące przetwarzania Pani/Pana danych osobowych przez ZHP znajdzie Pani/Pan pod adresem https://zhp.pl/rodo. W przypadku jakichkolwiek pytań może Pani/Pan skontaktować się z ZHP, pod podanym powyżej adresem siedziby. Może Pani/Pan również skontaktować się bezpośrednio z wyznaczonym przez nas inspektorem ochrony danych pod adresem zhp-iodo@rt-net.pl</small>
+    <small>Administratorem Pani/Pana danych osobowych jest Związek Harcerstwa Polskiego z siedzibą w Warszawie przy ul. Marii Konopnickiej 6, 00-491 Warszawa ("ZHP"). Pani/Pana dane osobowe będą przetwarzane w celu nawiązania i utrzymywania kontaktu, w tym kontaktu w związku z podjętą z ZHP współpracą, a w szczególności organizacją Harcerskiej Akcji Letniej. Szczegółowe informacje dotyczące przetwarzania Pani/Pana danych osobowych przez ZHP znajdzie Pani/Pan pod adresem https://zhp.pl/rodo. W przypadku jakichkolwiek pytań może Pani/Pan skontaktować się z ZHP, pod podanym powyżej adresem siedziby. Może Pani/Pan również skontaktować się bezpośrednio z wyznaczonym przez nas inspektorem ochrony danych pod adresem zhp-iodo@rt-net.pl</small>
+    </div>
 </div>
-
-{{form(form)}}
+<br/>
+<div class="row">
+    <div class="col">
+        {{form(form)}}
+    </div>
+</div>
 
 
 {% endblock %}
