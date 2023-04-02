@@ -3,9 +3,19 @@
 {% block title %}{% trans %}Zgłoszenie {% endtrans %}{{camp.name}}{% endblock %}
 
 {% block body %}
-<div class="py-5 text-center">
-    <p class="lead">Elektroniczny system rejestracji uczestników HAL, pozwoli Ci zapisać Twoje dziecki na obóz harcerski organizowany w Chorągwi Wielkopolskiej. Wypełnij poniższy formularz aby uzyskać kartę obozową.</p>
+<h1 class="text-center">{% trans %}Zgłoszenie na {% endtrans %} {{camp.name}}</h1>
+<div>
+<p>Drodzy Rodzice,<br/>
+wypełnienie tego formularza spowoduje wypełnienie karty kwalifikacyjnej niezbędnej do wypoczynku, a kadrze obozu pozwoli zaoszczędzić długie godziny pracy przy przepisywaniu danych z kart kwalifikacyjnych do wymaganych dokumentów.</p>
+
+<p>Czuwaj!</br>
+<i>Zespół IT Chorągwi Wielkopolskiej ZHP</i></p>
+
+
+<small>Administratorem Pani/Pana danych osobowych jest Związek Harcerstwa Polskiego z siedzibą w Warszawie przy ul. Marii Konopnickiej 6, 00-491 Warszawa ("ZHP"). Pani/Pana dane osobowe będą przetwarzane w celu nawiązania i utrzymywania kontaktu, w tym kontaktu w związku z podjętą z ZHP współpracą, a w szczególności organizacją Harcerskiej Akcji Letniej. Szczegółowe informacje dotyczące przetwarzania Pani/Pana danych osobowych przez ZHP znajdzie Pani/Pan pod adresem https://zhp.pl/rodo. W przypadku jakichkolwiek pytań może Pani/Pan skontaktować się z ZHP, pod podanym powyżej adresem siedziby. Może Pani/Pan również skontaktować się bezpośrednio z wyznaczonym przez nas inspektorem ochrony danych pod adresem zhp-iodo@rt-net.pl</small>
 </div>
 
-<h1>{{camp.name}}</h1>
+{{form(form)}}
+
+
 {% endblock %}

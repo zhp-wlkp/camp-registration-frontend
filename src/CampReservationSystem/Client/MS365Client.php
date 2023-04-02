@@ -19,8 +19,9 @@ class MS365Client implements ClientInterface
 
     public function getCamps():Stream
     {
+        $factory = new CampFactory();
         $response = $this->client->request('GET', $this->campsListsEndpoint);
         return Stream::ofAll($response->toArray())
-                    ->map(fn($record)=>new Camp(new CampId(sha1($record['id'])), $record['name']));
+                    ->map(fn($record)=>$factory->create($record));
     }
 }

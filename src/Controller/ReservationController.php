@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\CampReservationSystem\CampId;
 use App\CampReservationSystem\CampReservationSystemModule;
+use App\Form\RegistrationForm;
 use App\Utility\UidHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,8 +34,12 @@ class ReservationController extends AbstractController
             );
             return $this->redirectToRoute('app_reservation__camp_not_found');
         }
+
+        $form = $this->createForm(RegistrationForm::class, null, ['camp'=>$camp]);
+
         return $this->render('reservation/form.html.twig',[
-            'camp'=>$camp
+            'camp'=>$camp,
+            'form'=>$form
         ]);
     }
 }
