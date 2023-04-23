@@ -50,7 +50,7 @@ jobs:
           server-dir:  ${{ vars.PROD_TARGET_DIR }}
           protocol: ftps
           exclude: |
-            **/.var/cache/**
+            **/var/cache/**
             **/node_modules/**
 
       - name: Ruthlessly clear the cache
