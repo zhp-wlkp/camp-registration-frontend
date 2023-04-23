@@ -1,0 +1,46 @@
+on: 
+  push:
+    branches: [main]
+name: 🚀 Deploy to prod
+jobs: 
+  deploy:
+    name: 🎉 Deploy
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+
+      - name: Set Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Make envfile
+        shell: bash
+        run: |
+          cat <<ENV > .env.local
+            APP_ENV=prod
+            MS365_API_TOKEN=${{ secrets.MS365_API_TOKEN }}
+            CAMP_LIST_ENDPOINT=${{ vars.CAMP_LIST_ENDPOINT }}
+            REGISTRATION_ENDPOINT=${{ vars.REGISTRATION_ENDPOINT }}
+            ERROR_REPORTING_ENDPOINT=${{ vars.ERROR_REPORTING_ENDPOINT }}
+          ENV
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+
+      - name: Build production bundle
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build
+
+      - name: 🍕 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: ${{ vars.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          password: ${{ secrets.PROD_PASSWORD }}
+          server-dir:  ${{ vars.PROD_TARGET_DIR }}
+          protocol: ftps

@@ -9,14 +9,17 @@ use JsonSerializable;
 use libphonenumber\PhoneNumberUtil;
 use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 use PharIo\Manifest\Email;
+use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumber;
+use NumberToWords\NumberToWords;
 
 class RegistrationData implements \JsonSerializable
 {
+    protected string $id;
     public string $internalCampId;
     public ?Team $team = null;
 
@@ -66,24 +69,29 @@ class RegistrationData implements \JsonSerializable
     public ?string $motherSurname = null;
 
     #[NotBlank]
-    public ?YesNoValue $motherAddressYesno = null;
+    public ?YesNoValue $motherAlive = null;
 
     #[NotBlank]
+    public ?YesNoValue $fatherAlive = null;
+
+
+    public ?YesNoValue $motherAddressYesno = null;
+
+
     #[Regex(pattern: '/^[A-Za-z\-\s\.0-9\p{L}]+/u')]
     #[Length(max: 100)]
     public ?string $motherAddress = null;
 
-    #[NotBlank]
+
     #[Regex(pattern: '/^[A-Za-z\p{L}]+/u')]
     #[Length(max: 40)]
     public ?string $fatherName = null;
 
-    #[NotBlank]
     #[Regex(pattern: '/^[A-Za-z\-\s\p{L}]+/u')]
     #[Length(max: 40)]
     public ?string $fatherSurname = null;
 
-    #[NotBlank]
+
     public ?YesNoValue $fatherAddressYesno = null;
 
     #[Regex(pattern: '/^[A-Za-z\-\s\.0-9\p{L}]+$/u')]
@@ -190,11 +198,20 @@ class RegistrationData implements \JsonSerializable
     #[Length(exactly: 10)]
     public ?string $invoiceNip = null;
 
+    public ?\DateTime $startDay = null;
+    public ?\DateTime $endDay = null;
+
+    public ?float $price = null;
+
 
     public function jsonSerialize()
     {
+        // todo: extract to the service
+        $converter = new NumberToWords();
+        $transformer = $converter->getNumberTransformer('pl');
+
         $data = array_merge([
-            'id'=>sha1('camp-'.time()) // TODO: find better id
+            'price_text'=>$transformer->toWords(floor($this->price)).' zł '.sprintf('%02d gr', ($this->price - floor($this->price))*100)
         ], get_object_vars($this));
         $formatter = \libphonenumber\PhoneNumberUtil::getInstance();
         $nestedData = array_map(function ($item) use ($formatter) {
@@ -204,8 +221,11 @@ class RegistrationData implements \JsonSerializable
             if ($item instanceof PhoneNumber) {
                 return $formatter->format($item, PhoneNumberFormat::INTERNATIONAL);
             }
-            if ($item === null){
+            if ($item === null) {
                 return "";
+            }
+            if ($item instanceof \DateTime) {
+                return $item->format("Y-m-d");
             }
             return $item;
         }, $data);
@@ -214,6 +234,21 @@ class RegistrationData implements \JsonSerializable
 
     public function __construct(Camp $camp)
     {
+        $this->id =  Uuid::v4()->__toString();
         $this->internalCampId = $camp->getInternalCampId();
+        $this->disabilityYesno = YesNoValue::NO();
+        $this->motherAlive = YesNoValue::YES();
+        $this->fatherAlive = YesNoValue::YES();
+        $this->motherAddressYesno = YesNoValue::YES();
+        $this->fatherAddressYesno = YesNoValue::YES();
+        $this->allergyYesno = YesNoValue::NO();
+        $this->dietYesno = YesNoValue::NO();
+        $this->diseaseYesno = YesNoValue::NO();
+        $this->medicinesYesno = YesNoValue::NO();
+        $this->vaccinationYesno = YesNoValue::NO();
+        $this->tetanusYesno = YesNoValue::YES();
+        $this->diphtheriaYesno = YesNoValue::YES();
+        $this->typhoidYesno = YesNoValue::YES();
+        $this->invoiceYesno = YesNoValue::NO();
     }
 }

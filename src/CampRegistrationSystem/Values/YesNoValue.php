@@ -43,4 +43,14 @@ class YesNoValue implements Stringable, JsonSerializable
     {
         return $this->toString();
     }
+
+    public static function YES(): self
+    {
+        return new self('Tak');
+    }
+
+    public static function NO(): self
+    {
+        return new self('Nie');
+    }
 }

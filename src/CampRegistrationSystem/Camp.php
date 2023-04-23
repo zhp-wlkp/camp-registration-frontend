@@ -45,4 +45,9 @@ class Camp
     {
         return $this->internalCampId;
     }
+
+    public function getCurrency(): string
+    {
+        return 'PLN'; // @todo: add currency to sharepoint config
+    }
 }
