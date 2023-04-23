@@ -49,3 +49,14 @@ jobs:
           password: ${{ secrets.PROD_PASSWORD }}
           server-dir:  ${{ vars.PROD_TARGET_DIR }}
           protocol: ftps
+          exclude: |
+            **/.var/cache/**
+
+      - name: Ruthlessly clear the cache
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ vars.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          password: ${{ secrets.PROD_PASSWORD }}
+          workingDir:  ${{ vars.PROD_TARGET_DIR }}
+          remoteDirectories: "/var/cache/"
