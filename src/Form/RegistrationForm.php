@@ -443,7 +443,7 @@ class RegistrationForm extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'label'=>'Zgłoś uczestnika na obóz'
-            ]);
+            ]); 
     }
 
     public function configureOptions(OptionsResolver $resolver)
