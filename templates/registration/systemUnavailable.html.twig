@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Nie znaleziono obozu{% endtrans %}{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>{% trans %}System rejestracji uczestników jest niedostępny!{% endtrans %}</h1>
+    {% trans %}Czuwaj!{% endtrans %}
+
+    <p>{% trans %}Niestety ale wystąpił błąd techniczny podczas zapisu uczestnika na obóz. Wprowadzone przez Ciebie dane nie zostały zapisane ze względów bezpieczeństwa. Problem został zgłoszony administratorowi. Spróbuj ponownie później lub skontaktuj się z drużynowym lub komendantem obozu.{% endtrans %}</p>
+</div>
+{% endblock %}

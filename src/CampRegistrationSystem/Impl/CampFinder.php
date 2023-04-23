@@ -1,10 +1,10 @@
 <?php
 
-namespace App\CampReservationSystem\Impl;
+namespace App\CampRegistrationSystem\Impl;
 
-use App\CampReservationSystem\Camp;
-use App\CampReservationSystem\CampFinderInterface;
-use App\CampReservationSystem\CampId;
+use App\CampRegistrationSystem\Camp;
+use App\CampRegistrationSystem\CampFinderInterface;
+use App\CampRegistrationSystem\CampId;
 
 class CampFinder implements CampFinderInterface
 {

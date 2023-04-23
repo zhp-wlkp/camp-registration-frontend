@@ -1,0 +1,51 @@
+framework: 
+  http_client:
+    default_options:
+      headers:
+        'X-Authorization': 'Bearer %env(MS365_API_TOKEN)%'
+        'User-Agent': 'Formularz zgłaszarki obozowej'
+
+services:
+  _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  ms365.basic: '@http_client'
+
+  camp_registration_system.client.ms365client:
+    class: App\CampRegistrationSystem\Client\MS365Client
+    autowire: false
+    arguments:
+      $client: '@ms365.basic'
+      $campsListsEndpoint: '%env(CAMP_LIST_ENDPOINT)%'
+      $registrationEndpoint: '%env(REGISTRATION_ENDPOINT)%'
+      $errorReportingEndpoint: '%env(ERROR_REPORTING_ENDPOINT)%'
+
+  App\CampRegistrationSystem\Impl\CampFinder:
+    class: App\CampRegistrationSystem\Impl\CampFinder
+    arguments:
+      $client: '@camp_registration_system.client.ms365client'
+    lazy: true
+    shared: true
+
+  camp_registration_system.camp_finder.default: '@App\CampRegistrationSystem\Impl\CampFinder'
+
+  App\CampRegistrationSystem\Impl\CachedCampFinderDecorator:
+    decorates: 'camp_registration_system.camp_finder.default'
+    calls:
+      - setCache: ['@cache.app']
+
+  camp_registration_system.maker.default:
+    class: App\CampRegistrationSystem\Impl\RegistrationService
+    arguments:
+      $client: '@camp_registration_system.client.ms365client'
+    lazy: true
+    shared: true
+
+  App\CampRegistrationSystem\CampFinderInterface: '@camp_registration_system.camp_finder.default'
+  App\CampRegistrationSystem\RegistrationServiceInterface: '@camp_registration_system.maker.default'
+
+  # Facade
+  App\CampRegistrationSystem\CampRegistrationSystemModule:
+    class: App\CampRegistrationSystem\CampRegistrationSystemModule
+    shared: true

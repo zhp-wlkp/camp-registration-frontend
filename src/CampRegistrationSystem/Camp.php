@@ -1,8 +1,8 @@
 <?php
 
-namespace App\CampReservationSystem;
+namespace App\CampRegistrationSystem;
 
-use App\CampReservationSystem\Camp\Team;
+use App\CampRegistrationSystem\Camp\Team;
 
 class Camp
 {
@@ -12,6 +12,7 @@ class Camp
     private array $teams = [];
     public function __construct(
         private CampId $campId,
+        private string $internalCampId,
         private string $name
     ) {
     }
@@ -38,5 +39,10 @@ class Camp
     public function getTeams(): array
     {
         return $this->teams;
+    }
+
+    public function getInternalCampId(): string
+    {
+        return $this->internalCampId;
     }
 }

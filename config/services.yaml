@@ -7,7 +7,7 @@ parameters:
 
 # Imports modules
 imports:
-    - { resource: '../src/CampReservationSystem/config.yaml' }
+    - { resource: '../src/CampRegistrationSystem/config.yaml' }
 
 services:
     # default configuration for services in *this* file
@@ -20,7 +20,7 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/CampReservationSystem/'
+            - '../src/CampRegistrationSystem/'
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\CampReservationSystem;
+namespace App\CampRegistrationSystem;
 
 
 interface CampFinderInterface{

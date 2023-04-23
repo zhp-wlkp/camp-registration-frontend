@@ -1,10 +1,10 @@
 <?php
 
-namespace App\CampReservationSystem;
+namespace App\CampRegistrationSystem;
 
 use Exception;
 
-class CampId implements \Stringable
+class CampId implements \Stringable, \JsonSerializable
 {
     public const VALIDATION_REGEX = '^[a-f0-9]{40}$';
     private string $value;
@@ -22,7 +22,7 @@ class CampId implements \Stringable
         if (!$comparable instanceof self) {
             return false;
         }
-        return $this->value = $comparable->value;
+        return $this->value === $comparable->value;
     }
 
     public function getValue(): string
@@ -31,6 +31,11 @@ class CampId implements \Stringable
     }
 
     public function __toString()
+    {
+        return $this->getValue();
+    }
+
+    public function jsonSerialize()
     {
         return $this->getValue();
     }

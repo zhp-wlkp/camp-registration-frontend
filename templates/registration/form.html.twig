@@ -19,6 +19,13 @@
 <br/>
 <div class="row">
     <div class="col">
+      {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger" role="alert">{{ flashMessage|trans }}</div>
+    {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
         {{form(form)}}
     </div>
 </div>
