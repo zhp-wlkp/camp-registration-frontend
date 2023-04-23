@@ -51,6 +51,7 @@ jobs:
           protocol: ftps
           exclude: |
             **/.var/cache/**
+            **/node_modules/**
 
       - name: Ruthlessly clear the cache
         uses: StephanThierry/ftp-delete-action@v2.1
