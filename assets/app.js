@@ -18,13 +18,13 @@ import $ from 'jquery'
 $(document).ready(function () {
 
     function updateFields(triggerField){
-        console.log(triggerField);
+    
         let showValue = triggerField.data('show-value');
         let value = triggerField.val();
         let targetClass = triggerField.data('fields');
         let elements = $('.' + targetClass);
         console.log(targetClass, elements);
-        if (value == showValue) {
+        if (value == showValue && triggerField.is(":visible")) {
             elements.each(function (i, j) {
                 $(j).parent().show();
             });

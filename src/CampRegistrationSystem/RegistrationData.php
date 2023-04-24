@@ -12,6 +12,7 @@ use PharIo\Manifest\Email;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
 use Symfony\Component\Validator\Constraints\Regex;
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumber;
@@ -201,6 +202,8 @@ class RegistrationData implements \JsonSerializable
     public ?\DateTime $startDay = null;
     public ?\DateTime $endDay = null;
 
+    #[NotBlank]
+    #[Positive]
     public ?float $price = null;
 
 

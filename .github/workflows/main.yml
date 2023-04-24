@@ -1,6 +1,6 @@
 on: 
   push:
-    branches: [master]
+    branches: [xyz]
 name: 🚀 Deploy to prod
 jobs: 
   deploy:
