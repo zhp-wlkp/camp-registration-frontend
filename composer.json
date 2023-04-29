@@ -12,6 +12,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
         "giggsey/libphonenumber-for-php": "^8.13",
+        "kiczort/polish-validator-bundle": "^1.3",
         "kwn/number-to-words": "^2.6",
         "munusphp/munus": "^0.4.0",
         "odolbeau/phone-number-bundle": "^3.9",

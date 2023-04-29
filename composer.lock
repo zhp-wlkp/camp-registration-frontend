@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b90546a6d6eff10a16fd5e6480a28deb",
+    "content-hash": "fb4a619af534e70862e6d9668068d7e2",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1583,6 +1583,124 @@
                 "source": "https://github.com/giggsey/Locale/tree/2.4"
             },
             "time": "2023-04-13T07:40:58+00:00"
+        },
+        {
+            "name": "kiczort/polish-validator",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kiczort/polish-validator.git",
+                "reference": "bbb4764c1e9a54f3e40be0d2af327b0a14c85425"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kiczort/polish-validator/zipball/bbb4764c1e9a54f3e40be0d2af327b0a14c85425",
+                "reference": "bbb4764c1e9a54f3e40be0d2af327b0a14c85425",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kiczort\\": "src/Kiczort/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grzegorz Koziński",
+                    "email": "gkozinski@gmail.com"
+                },
+                {
+                    "name": "Michał Mleczko",
+                    "email": "kontakt@michalmleczko.waw.pl"
+                }
+            ],
+            "description": "Validators for Polish identification numbers: PESEL, NIP, REGON.",
+            "keywords": [
+                "nip",
+                "pesel",
+                "pl validator",
+                "polish validator",
+                "regon",
+                "validator"
+            ],
+            "support": {
+                "issues": "https://github.com/kiczort/polish-validator/issues",
+                "source": "https://github.com/kiczort/polish-validator/tree/v1.2.0"
+            },
+            "time": "2023-01-31T01:25:10+00:00"
+        },
+        {
+            "name": "kiczort/polish-validator-bundle",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kiczort/polish-validator-bundle.git",
+                "reference": "87b8fe32a3ea08fa87930102deb02a42e37aefc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kiczort/polish-validator-bundle/zipball/87b8fe32a3ea08fa87930102deb02a42e37aefc2",
+                "reference": "87b8fe32a3ea08fa87930102deb02a42e37aefc2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "kiczort/polish-validator": "^1.2",
+                "php": ">=8.0",
+                "symfony/config": "~6.1",
+                "symfony/dependency-injection": "~6.1",
+                "symfony/http-kernel": "~6.1",
+                "symfony/validator": "~6.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~9.0",
+                "roave/security-advisories": "dev-latest",
+                "symfony/intl": "^6.2",
+                "symfony/phpunit-bridge": "~6.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kiczort\\": "src/Kiczort/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grzegorz Koziński",
+                    "email": "gkozinski@gmail.com"
+                }
+            ],
+            "description": "Symfony bundle with validators for Polish identification numbers: PESEL, NIP, REGON, PWZ.",
+            "keywords": [
+                "Symfony Bundle",
+                "nip",
+                "pesel",
+                "pl validator",
+                "polish validator",
+                "pwz",
+                "regon",
+                "symfony validator",
+                "validator"
+            ],
+            "support": {
+                "issues": "https://github.com/kiczort/polish-validator-bundle/issues",
+                "source": "https://github.com/kiczort/polish-validator-bundle/tree/v1.3.1"
+            },
+            "time": "2023-01-31T01:31:24+00:00"
         },
         {
             "name": "kwn/number-to-words",

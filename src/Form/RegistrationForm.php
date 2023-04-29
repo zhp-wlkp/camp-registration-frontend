@@ -54,7 +54,7 @@ class RegistrationForm extends AbstractType
                     'placeholder'=>''
                 ]
             ])
-            ->add('pesel', PeselType::class, [
+            ->add('pesel', TextType::class, [
                 'label'=>'Podaj PESEL dziecka*',
                 'required'=>true,
                 'attr'=>[
@@ -175,7 +175,7 @@ class RegistrationForm extends AbstractType
                 'label'=>'Podaj numer telefonu opiekuna prawnego*',
                 'required'=>true,
                 'default_region'=>'PL',
-                'format' => \libphonenumber\PhoneNumberFormat::NATIONAL
+                'format' => \libphonenumber\PhoneNumberFormat::INTERNATIONAL
             ])
             ->add('phone1Owner', TextType::class, [
                 'label'=>'Kogo to numer telefonu?*',
@@ -186,7 +186,7 @@ class RegistrationForm extends AbstractType
                 'label'=>'Podaj numer telefonu opiekuna prawnego',
                 'required'=>false,
                 'default_region'=>'PL',
-                'format' => \libphonenumber\PhoneNumberFormat::NATIONAL
+                'format' => \libphonenumber\PhoneNumberFormat::INTERNATIONAL
             ])
             ->add('phone2Owner', TextType::class, [
                 'label'=>'Kogo to numer telefonu?',

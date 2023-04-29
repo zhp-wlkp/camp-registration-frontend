@@ -6,8 +6,9 @@ use App\CampRegistrationSystem\Camp\Team;
 
 use App\CampRegistrationSystem\Values\YesNoValue;
 use JsonSerializable;
-use libphonenumber\PhoneNumberUtil;
+use Kiczort\PolishValidatorBundle\Validator\Constraints\Pesel;
 use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
+
 use PharIo\Manifest\Email;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints\Length;
@@ -35,8 +36,14 @@ class RegistrationData implements \JsonSerializable
     public ?string $surname = null;
 
     #[NotBlank]
+     /**
+      * 
+     * @Pesel( 
+     *     message = "'{{ value }}' nie jest prawidłowym numerem PESEL.",
+     *     strict = true
+     * ) //Bundle nie jest kompatybilny z Constraintami w postaci atrybutów, stąd anotacja. 
+     */
     #[Length(exactly: 11)]
-    #[Regex(pattern: '/^[0-9]{11}$/', message: 'Pesel to 11 cyfr.')]
     public ?string $pesel = null;
 
     #[NotBlank]
